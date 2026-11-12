@@ -1,0 +1,10 @@
+body{margin:0;font-family:Segoe UI,Arial,sans-serif;background:#0d1028;color:#e8e8f0;line-height:1.6}
+header{background:linear-gradient(135deg,#141a4a,#3a1670);padding:24px;text-align:center}
+header img{width:110px;border-radius:22px}
+header h1{margin:10px 0 0;font-size:28px}
+nav a{color:#ffd23f;margin:0 10px;text-decoration:none;font-weight:600}
+main{max-width:820px;margin:0 auto;padding:24px}
+h2{color:#ffd23f;border-bottom:1px solid #333a6a;padding-bottom:6px}
+.lang{background:#161b3d;border-radius:12px;padding:8px 22px;margin:20px 0}
+footer{text-align:center;color:#8a8fb0;padding:20px;font-size:14px}
+a{color:#7fb3ff}
