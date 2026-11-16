@@ -1,0 +1,21 @@
+<!doctype html>
+<!-- Kuky Clipper · © 2026 Maicor Mota. Todos los derechos reservados. -->
+<!-- Página puente OAuth: https://managerkuky.github.io/clipper/oauth.html
+     Reenvía code+state a TU PC (túnel) solo si la dirección es un túnel https conocido. No guarda nada. -->
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="referrer" content="no-referrer"><title>Kuky Clipper · conectando…</title>
+<style>body{background:#070a14;color:#e9ecf1;font-family:system-ui,-apple-system,sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;text-align:center}div{max-width:420px;padding:24px}b{color:#3cf0ff}</style></head>
+<body><div><h2>Kuky <b>Clipper</b></h2><p id="m">Volviendo a tu PC…</p></div>
+<script>
+(function(){
+  var q=new URLSearchParams(location.search), st=q.get('state')||'', i=st.indexOf('~'), m=document.getElementById('m');
+  var ALLOW=/^https:\/\/[a-z0-9.-]+\.(trycloudflare\.com|loca\.lt|ngrok-free\.app|ngrok\.io|ngrok\.app)(:\d+)?$/;
+  if(i<1){m.textContent='Enlace no válido. Vuelve a intentarlo desde Kuky Clipper.';return}
+  var b=st.slice(i+1).replace(/-/g,'+').replace(/_/g,'/');while(b.length%4)b+='=';
+  var base='';try{base=atob(b)}catch(e){}
+  if(!ALLOW.test(base)){m.textContent='Dirección de la PC no permitida. Por seguridad no se reenvía.';return}
+  var out=new URLSearchParams();['code','state','error','error_description','scope'].forEach(function(k){if(q.get(k)!=null)out.set(k,q.get(k))});
+  history.replaceState(null,'',location.pathname);   // el code no queda en el historial
+  location.replace(base+'/oauth/bounce?'+out.toString());
+})();
+</script></body></html>
